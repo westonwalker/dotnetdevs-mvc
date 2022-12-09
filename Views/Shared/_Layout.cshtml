@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DotnetDevs</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <script src="https://cdn.tailwindcss.com?plugins=line-clamp,forms"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+<body>
+    <div class="bg-[#0E141B] text-white">
+        <partial name="~/Views/Shared/Partials/_Nav.cshtml" />
+        <main>
+            <article class="">
+                @RenderBody()
+            </article>
+        </main>
+        <partial name="~/Views/Shared/Partials/_Footer.cshtml" />
+    </div>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿@model Register
+@{
+	ViewData["Title"] = "Register";
+	Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<div class="min-h-screen bg-[#0E141B]">
+	<section class="lg:max-w-4xl mx-auto py-20">
+		<div class="mb-5 text-center">
+			<a class="uppercase font-extrabold text-xl py-4 text-white" href="/">
+				Dotnet<span class="font-light">Devs</span>
+			</a>
+		</div>
+		<h1 class="mb-6 text-center text-gray-100 text-3xl leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight font-bold">
+			Create your account
+		</h1>
+		<form asp-action="Register" asp-controller="Account" method="post" class="flex flex-col space-y-6 p-6 bg-white sm:mx-auto sm:w-full sm:max-w-md sm:rounded-lg">
+			<div class="text-red-500 text-sm flex justify-center">
+				@Html.ValidationSummary()
+			</div>
+			<div>
+				<label asp-for="@Model.Email" class="block text-sm font-medium text-gray-700">Email address</label>
+				<div class="mt-1">
+					<input asp-for="@Model.Email" id="email" name="Email" type="email" autocomplete="email" required class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" />
+				</div>
+				<div class="mt-1 text-red-300 text-sm">
+					@Html.ValidationMessageFor(m => m.Email)
+				</div>
+			</div>
+			<div>
+				<label asp-for="@Model.Password" class="block text-sm font-medium text-gray-700">Password</label>
+				<div class="mt-1">
+					<input asp-for="@Model.Password" id="password" name="Password" type="password" autocomplete="current-password" required class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" />
+				</div>
+				<div class="mt-1 text-red-300 text-sm">
+					@Html.ValidationMessageFor(m => m.Password)
+				</div>
+			</div>
+			<div>
+				<label asp-for="@Model.ConfirmPassword" class="block text-sm font-medium text-gray-700">Password</label>
+				<div class="mt-1">
+					<input asp-for="@Model.ConfirmPassword" id="confirm_password" name="ConfirmPassword" type="password" autocomplete="current-password" required class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" />
+				</div>
+				<div class="mt-1 text-red-300 text-sm">
+					@Html.ValidationMessageFor(m => m.ConfirmPassword)
+				</div>
+			</div>
+			<div>
+				<button type="submit" class="group relative w-full flex items-center justify-center rounded-md px-5 py-2 text-base font-medium text-white bg-gradient-to-r from-pink-500 to-orange-700 overflow-hidden rounded-md overflow-hidden rounded-md">
+					<div class="absolute transform -translate-x-full group-hover:-translate-x-0 h-full w-full transition ease-in-out duration-500 bg-gradient-to-r from-teal-400 to-blue-700">
+					</div>
+					<p class="relative z-10">Create account</p>
+				</button>
+			</div>
+			<div class="relative mt-6">
+				<div class="absolute inset-0 flex items-center" aria-hidden="true">
+					<div class="w-full border-t border-gray-300"></div>
+				</div>
+				<div class="relative flex justify-center text-sm">
+					<span class="bg-white px-2 text-gray-500">Or</span>
+				</div>
+			</div>
+			<div class="flex items-center justify-center mt-4">
+				<div class="text-sm">
+					<a href="/login" class="font-medium text-gray-900 hover:text-black">Sign in to your account→</a>
+				</div>
+			</div>
+		</form>
+	</section>
+</div>
