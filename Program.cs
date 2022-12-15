@@ -48,12 +48,12 @@ builder.Services.AddControllersWithViews()
 builder.Services.AddTransient<UserManager<ApplicationUser>>();
 builder.Services.AddTransient<SignInManager<ApplicationUser>>();
 builder.Services.AddScoped<DeveloperService>();
-//builder.Services.AddScoped<CompanyService>();
-//builder.Services.AddScoped<SearchStatusService>();
-//builder.Services.AddScoped<ExperienceLevelService>();
+builder.Services.AddScoped<CompanyService>();
+builder.Services.AddScoped<SearchStatusService>();
+builder.Services.AddScoped<ExperienceLevelService>();
 builder.Services.AddScoped<UserService>();
-
 builder.Services.AddServerSideBlazor();
+builder.Services.AddAutoMapper(typeof(MapperProfile));
 
 var app = builder.Build();
 

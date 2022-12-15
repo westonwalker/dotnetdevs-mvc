@@ -1,4 +1,4 @@
-﻿@model DevelopersIndex
+﻿@model DeveloperIndex
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -23,7 +23,7 @@
 					<div class="mt-4 lg:mt-0">
 						@if (Model.User != null && Model.User.Developer != null)
 						{
-							<a href="/developers/@Model.User.Developer.ID/edit" class="group relative flex items-center justify-center py-1 px-4 mx-auto w-auto max-w-sm md:w-auto text-base font-semibold text-white bg-gradient-to-r from-pink-500 to-orange-700 overflow-hidden rounded-md overflow-hidden rounded-md">
+							<a href="/developers/edit/@Model.User.Developer.ID" class="group relative flex items-center justify-center py-1 px-4 mx-auto w-auto max-w-sm md:w-auto text-base font-semibold text-white bg-gradient-to-r from-pink-500 to-orange-700 overflow-hidden rounded-md overflow-hidden rounded-md">
 								<div class="absolute transform -translate-x-full group-hover:-translate-x-0 h-full w-full transition ease-in-out duration-500 bg-gradient-to-r from-teal-400 to-blue-700">
 								</div>
 								<p class="relative z-10 mr-2 text-base leading-loose">Update my profile</p>

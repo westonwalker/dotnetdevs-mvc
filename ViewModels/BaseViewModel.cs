@@ -5,6 +5,6 @@ namespace dotnetdevs.ViewModels
 {
 	public class BaseViewModel
 	{
-		public ApplicationUser User { get; set; }
+		public ApplicationUser? User { get; set; }
 	}
 }

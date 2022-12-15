@@ -1,0 +1,117 @@
+﻿@model CompanyEdit
+@{
+	ViewData["Title"] = "Edit your company profile";
+}
+<div class="">
+	<div class="relative flex flex-wrap justify-center items-center py-12 md:py-20 max-w-6xl mx-auto lg:px-8">
+		<div class="flex-1">
+			@if (!Model.IsSubscribed)
+			{
+			<partial name="~/Views/Shared/Partials/_SubscribeAlert.cshtml" />
+			}
+			<h1 class="mb-4 text-gray-100 text-3xl leading-tight font-bold pl-6 lg:pl-0">
+				Your company profile
+			</h1>
+			<form asp-action="Update" asp-controller="Companies" asp-route-id="@Model.ID" method="post" enctype="multipart/form-data">
+				<div class="text-red-500 text-sm flex justify-start">
+					@Html.ValidationSummary()
+				</div>
+				<div class="bg-[#182635] text-left lg:rounded-lg">
+					<div class="flex flex-col md:flex-row md:justify-between border-b border-gray-900 p-6 md:gap-6">
+						<div class="w-full md:w-1/3 space-y-6 mb-6 md:mb-0">
+							<div class="">
+								<h2 class="text-lg font-semibold">Company details</h2>
+								<p class="text-base text-gray-200">
+									Information about your business. This is your chance to show off your company to potential hires!
+								</p>
+							</div>
+						</div>
+						<div class="w-full md:w-2/3 space-y-6">
+							<div>
+								<label asp-for="CompanyName" class="block text-base font-medium text-white">Company name *</label>
+								<div class="mt-2">
+									<input asp-for="CompanyName" type="text" required class="block w-full py-2 px-3 text-gray-100 outline-none rounded-md bg-[#2b3d51] border-2 border-transparent focus:border-sky-300" />
+								</div>
+								<div class="mt-1 text-red-500 text-sm">
+									<span asp-validation-for="CompanyName"></span>
+								</div>
+							</div>
+							<div>
+								<label class="block text-base font-medium text-white" for="twitter">Website *</label>
+								<div class="mt-1 flex rounded-md">
+									<span class="inline-flex items-center px-3 rounded-l-md bg-[#32475e] text-gray-400">
+										https://
+									</span>
+									<input asp-for="Website" type="text" class="flex-1 block w-full py-2 px-3 rounded-none rounded-r-md text-gray-100 outline-none bg-[#2b3d51] border-2 border-transparent focus:border-sky-300" />
+								</div>
+								<div class="mt-1 text-red-300 text-sm">
+									@Html.ValidationMessageFor(m => m.Website)
+								</div>
+							</div>
+							<div>
+								<label asp-for="Bio" class="block text-base font-medium text-white">About your company *</label>
+								<div class="mt-2">
+									<textarea asp-for="Bio" rows="8" type="text" required class="block w-full py-2 px-3 text-gray-100 outline-none rounded-md bg-[#2b3d51] border-2 border-transparent focus:border-sky-300"></textarea>
+								</div>
+								<div class="mt-1 text-red-500 text-sm">
+									@Html.ValidationMessageFor(m => m.Bio)
+								</div>
+							</div>
+							<div>
+								<label class="block text-base font-medium text-white" for="country">Avatar</label>
+								<p class="text-sm text-gray-300">Leave empty if you don't want to update your avatar. A square png or jpg image works best (250x250). Large images will get cutoff due to size limitations.</p>
+								<div class="mt-2 flex flex-col md:flex-row md:items-center items-start">
+									<div class="flex-1">
+										<input asp-for="AvatarFile" type="file" accept=".png, .jpg">
+									</div>
+								</div>
+								<div class="mt-1 text-red-300 text-sm">
+									<span asp-validation-for="Avatar"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="bg-gray-800 text-left lg:rounded-lg mt-12">
+					<div class="flex flex-col md:flex-row md:justify-between border-b border-gray-900 p-6 md:gap-6">
+						<div class="w-full md:w-1/3 space-y-6 mb-6 md:mb-0">
+							<div class="">
+								<h2 class="text-lg font-semibold">Personal details</h2>
+								<p class="text-base text-gray-200">
+									Information about you, the contact point for your business on DotnetDevs.
+								</p>
+							</div>
+						</div>
+						<div class="w-full md:w-2/3 space-y-6">
+							<div>
+								<label asp-for="PersonalName" class="block text-base font-medium text-white">Your name *</label>
+								<div class="mt-2">
+									<input asp-for="PersonalName" type="text" required class="block w-full py-2 px-3 text-gray-100 outline-none rounded-md bg-[#2b3d51] border-2 border-transparent focus:border-sky-300" />
+								</div>
+								<div class="mt-1 text-red-500 text-sm">
+									<span asp-validation-for="PersonalName"></span>
+								</div>
+							</div>
+							<div>
+								<label asp-for="JobTitle" class="block text-base font-medium text-white">Job title *</label>
+								<div class="mt-2">
+									<input asp-for="JobTitle" type="text" required class="block w-full py-2 px-3 text-gray-100 outline-none rounded-md bg-[#2b3d51] border-2 border-transparent focus:border-sky-300" />
+								</div>
+								<div class="mt-1 text-red-500 text-sm">
+									<span asp-validation-for="JobTitle"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="w-full flex justify-end mt-6 pr-6 lg:pr-0">
+					<button type="submit" class="group relative flex items-center justify-center py-2 px-5 font-semibold text-white bg-gradient-to-r from-pink-500 to-orange-700 overflow-hidden rounded-md overflow-hidden rounded-md">
+						<div class="absolute transform -translate-x-full group-hover:-translate-x-0 h-full w-full transition ease-in-out duration-500 bg-gradient-to-r from-teal-400 to-blue-700">
+						</div>
+						<p class="relative z-10 text-base leading-loose">Save</p>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

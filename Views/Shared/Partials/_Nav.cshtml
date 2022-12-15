@@ -77,13 +77,20 @@
 									<div>
 										@if (userInfo != null && userInfo.Developer != null)
 										{
-											<a href="/developers/@userInfo.Developer.ID" x-on:click="desktopMenuOpen = false" class="block px-4 py-4 text-base text-gray-300 hover:text-white hover:bg-[#2b3d51] font-semibold" role="menuitem">Developer profile</a>
+											<a href="/developers/show/@userInfo.Developer.ID" x-on:click="desktopMenuOpen = false" class="block px-4 py-4 text-base text-gray-300 hover:text-white hover:bg-[#2b3d51] font-semibold" role="menuitem">Developer profile</a>
 										}
 										else
 										{
 											<a href="/developers/create" x-on:click="desktopMenuOpen = false" class="block px-4 py-4 text-base text-gray-300 hover:text-white hover:bg-[#2b3d51] font-semibold" role="menuitem">Developer profile</a>
 										}
-										<a href="#" class="block px-4 py-4 text-base text-gray-300 hover:text-white hover:bg-[#2b3d51] font-semibold" role="menuitem">Business profile</a>
+										@if (userInfo != null && userInfo.Company != null)
+										{
+											<a href="/companies/show/@userInfo.Company.ID" x-on:click="desktopMenuOpen = false" class="block px-4 py-4 text-base text-gray-300 hover:text-white hover:bg-[#2b3d51] font-semibold" role="menuitem">Company profile</a>
+										}
+										else
+										{
+											<a href="/companies/create" x-on:click="desktopMenuOpen = false" class="block px-4 py-4 text-base text-gray-300 hover:text-white hover:bg-[#2b3d51] font-semibold" role="menuitem">Company profile</a>
+										}
 										<a href="#" class="block px-4 py-4 text-base text-gray-300 hover:text-white hover:bg-[#2b3d51] font-semibold" role="menuitem">Conversations</a>
 										<form method="post" action="/logout">
 											<button type="submit" class="block px-4 py-4 text-base text-gray-300 hover:text-white hover:bg-[#2b3d51] w-full text-left font-semibold">Logout</button>
@@ -130,13 +137,20 @@
 				{
 					@if (userInfo != null && userInfo.Developer != null)
 					{
-						<a x-on:click="mobileMenuOpen = false" class="text-gray-300 hover:bg-[#2b3d51] hover:text-white block px-3 py-2 rounded-md text-base font-medium" href="/developers/@userInfo.Developer.ID">Developer Profile</a>
+						<a href="/developers/show/@userInfo.Developer.ID" x-on:click="mobileMenuOpen = false" class="text-gray-300 hover:bg-[#2b3d51] hover:text-white block px-3 py-2 rounded-md text-base font-medium">Developer Profile</a>
 					}
 					else
 					{
-						<a x-on:click="mobileMenuOpen = false" class="text-gray-300 hover:bg-[#2b3d51] hover:text-white block px-3 py-2 rounded-md text-base font-medium" href="/developers/create">Developer Profile</a>
+						<a href="/developers/create" x-on:click="mobileMenuOpen = false" class="text-gray-300 hover:bg-[#2b3d51] hover:text-white block px-3 py-2 rounded-md text-base font-medium">Developer Profile</a>
 					}
-					<a x-on:click="mobileMenuOpen = false" class="text-gray-300 hover:bg-[#2b3d51] hover:text-white block px-3 py-2 rounded-md text-base font-medium" href="/businesses/403">Business profile</a>
+					@if (userInfo != null && userInfo.Company != null)
+					{
+						<a href="/companies/show/@userInfo.Company.ID" x-on:click="mobileMenuOpen = false" class="text-gray-300 hover:bg-[#2b3d51] hover:text-white block px-3 py-2 rounded-md text-base font-medium">Company Profile</a>
+					}
+					else
+					{
+						<a href="/companies/create" x-on:click="mobileMenuOpen = false" class="text-gray-300 hover:bg-[#2b3d51] hover:text-white block px-3 py-2 rounded-md text-base font-medium">Company Profile</a>
+					}
 					<a x-on:click="mobileMenuOpen = false" class="text-gray-300 hover:bg-[#2b3d51] hover:text-white block px-3 py-2 rounded-md text-base font-medium" href="/conversations">Conversations</a>
 					<form method="post" action="/logout">
 						<button x-on:click="mobileMenuOpen = false" class="block w-full text-left text-gray-300 hover:bg-[#2b3d51] hover:text-white block px-3 py-2 rounded-md text-base font-medium" type="submit">

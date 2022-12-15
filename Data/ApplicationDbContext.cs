@@ -20,14 +20,14 @@ namespace dotnetdevs.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<SearchStatus>().HasData(
-                new SearchStatus { ID = 1, Name = "Actively looking", Description = "Your profile can get featured on the homepage." },
+                new SearchStatus { ID = 1, Name = "Actively looking", IsDefault=true, Description = "Your profile can get featured on the homepage." },
                 new SearchStatus { ID = 2, Name = "Open", Description = "Your profile can get featured on the homepage." },
                 new SearchStatus { ID = 3, Name = "Not interested", Description = "Your profile will not appear in search results." },
                 new SearchStatus { ID = 4, Name = "Invisible", Description = "Your profile is hidden and can only be seen by yourself." }
             );
             modelBuilder.Entity<ExperienceLevel>().HasData(
                 new ExperienceLevel { ID = 1, Name = "Junior" },
-                new ExperienceLevel { ID = 2, Name = "Mid-level" },
+                new ExperienceLevel { ID = 2, Name = "Mid-level", IsDefault = true },
                 new ExperienceLevel { ID = 3, Name = "Senior" },
                 new ExperienceLevel { ID = 4, Name = "Lead" }
             );

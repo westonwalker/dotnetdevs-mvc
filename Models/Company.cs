@@ -9,7 +9,9 @@ namespace dotnetdevs.Models
     {
         public int ID { get; set; }
 
-        public string UserID { get; set; }
+		[Required]
+		public string UserID { get; set; }
+
         [ForeignKey("UserID")]
         public virtual ApplicationUser ApplicationUser { get; set; }
 

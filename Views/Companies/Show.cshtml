@@ -1,0 +1,65 @@
+﻿@model CompanyShow
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject UserService UserService
+@{
+	ViewData["Title"] = $"Companies hiring .NET devs - {Model.Company.CompanyName}";
+	Model.User = await UserService.GetAuthenticatedUser(this.User);
+}
+
+<div class="">
+	<div class="relative flex flex-wrap justify-center items-center py-12 md:py-20 max-w-6xl mx-auto lg:px-8">
+		<div class="flex-1">
+			<div class="bg-[#182635] lg:rounded-lg transition ease-in-out">
+				<div class="relative">
+					<div class="px-6 py-6 sm:p-6 flex sm:space-x-8 flex-col sm:flex-row">
+						<div class="shrink-0">
+							<img alt="@Model.Company.CompanyName avatar" class="h-20 w-20 sm:h-32 sm:w-32 ring-4 ring-white object-cover rounded-full bg-gray-300" src="@Model.Company.Avatar">
+						</div>
+						<div class="self-start flex-1 min-w-0 space-y-3 mt-4 sm:mt-0">
+							<div class="flex flex-col xl:flex-row gap-x-6 xl:space-y-0">
+								<div class="w-full space-y-6">
+									<div class="flex items-start justify-between space-x-2">
+										<div>
+											<a href="https://@Model.Company.website" target="_blank">
+												<h1 class="text-xl sm:text-2xl font-medium text-gray-200 hover:underline hover:text-white">
+													@Model.Company.CompanyName →
+												</h1>
+											</a>
+											<h2 class="text-gray-400 mt-1 font-medium">
+												@Model.Company.PersonalName, @Model.Company.JobTitle
+											</h2>
+										</div>
+										<div class="inline-flex ml-auto flex-row-reverse shrink-0 items-center text-gray-400">
+											<div class="flex items-center">
+												@if (Model.User != null && Model.Company.UserID == Model.User.Id)
+												{
+													<a href="/companies/edit/@Model.Company.ID" class="group relative flex items-center justify-center py-1 px-4 mx-auto w-auto max-w-sm md:w-auto text-lg font-semibold text-white bg-gradient-to-r from-pink-500 to-orange-700 overflow-hidden rounded-md overflow-hidden rounded-md">
+														<div class="absolute transform -translate-x-full group-hover:-translate-x-0 h-full w-full transition ease-in-out duration-500 bg-gradient-to-r from-teal-400 to-blue-700">
+														</div>
+														<p class="relative z-10 mr-2 text-base leading-loose inline-flex items-center">
+															<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mr-1 w-4 h-4 fill-white">
+																<path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
+															</svg>
+															<span>Edit</span>
+														</p>
+													</a>
+												}
+											</div>
+										</div>
+									</div>
+									<div class="block w-full mt-8">
+										<p class="leading-loose lg:leading-loose text-sm sm:text-base text-gray-200">
+											@Html.Raw(Model.Company.Bio)
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

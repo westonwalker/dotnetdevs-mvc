@@ -8,7 +8,9 @@ namespace dotnetdevs.Models
     {
         public int ID { get; set; }
 
-        public string UserID { get; set; }
+		[Required]
+		public string UserID { get; set; }
+
         [ForeignKey("UserID")]
         public virtual ApplicationUser ApplicationUser { get; set; }
 
@@ -38,13 +40,15 @@ namespace dotnetdevs.Models
         [Required]
         public string Bio { get; set; }
 
-        public int SearchStatusID { get; set; }
+		[Required]
+		public int SearchStatusID { get; set; }
 
-        public SearchStatus SearchStatus { get; set; }
+        public virtual SearchStatus SearchStatus { get; set; }
 
-        public int ExperienceLevelID { get; set; }
+		[Required]
+		public int ExperienceLevelID { get; set; }
 
-        public ExperienceLevel ExperienceLevel { get; set; }
+        public virtual ExperienceLevel ExperienceLevel { get; set; }
 
         public DateTime StartDate { get; set; }
 

@@ -24,6 +24,7 @@ namespace dotnetdevs.Services
 		public async Task<Developer?> Get(int id)
 		{
 			return await _dbContext.Developers
+							.Where(d => d.ID == id)
 							.Include(developer => developer.SearchStatus)
 							.Include(developer => developer.ExperienceLevel)
 							.FirstOrDefaultAsync();
@@ -47,7 +48,7 @@ namespace dotnetdevs.Services
 
 		public async Task<Developer> Update(Developer developer)
 		{
-			_dbContext.Developers.Update(developer);
+			_dbContext.Attach(developer);
 			_dbContext.SaveChanges();
 			return developer;
 		}
